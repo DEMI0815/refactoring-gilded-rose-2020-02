@@ -1,5 +1,9 @@
 package com.gildedrose;
 
+import com.gildedrose.items.AgedBrie;
+import com.gildedrose.items.BackstagePass;
+import com.gildedrose.items.Sulfuras;
+
 public class Item {
 
     public String name;
@@ -33,10 +37,10 @@ public class Item {
 
     void updateQualityWhenExpired() {
         if (sellIn < 0) {
-            if (!isNameEquals(GildedRose.agedBrie)) {
-                if (!isNameEquals(GildedRose.backstagePasses)) {
+            if (!isNameEquals(AgedBrie.agedBrie)) {
+                if (!isNameEquals(BackstagePass.backstagePass)) {
                     if (quality > 0) {
-                        if (!isNameEquals(GildedRose.sulfuras)) {
+                        if (!isNameEquals(Sulfuras.sulfuras)) {
                             quality = quality - 1;
                         }
                     }
@@ -52,16 +56,16 @@ public class Item {
     }
 
     void updateSellIn() {
-        if (!isNameEquals(GildedRose.sulfuras)) {
+        if (!isNameEquals(Sulfuras.sulfuras)) {
             sellIn = sellIn - 1;
         }
     }
 
     void updateQuality() {
-        if (!isNameEquals(GildedRose.agedBrie)
-                && !isNameEquals(GildedRose.backstagePasses)) {
+        if (!isNameEquals(AgedBrie.agedBrie)
+                && !isNameEquals(BackstagePass.backstagePass)) {
             if (quality > 0) {
-                if (!isNameEquals(GildedRose.sulfuras)) {
+                if (!isNameEquals(Sulfuras.sulfuras)) {
                     quality = quality - 1;
                 }
             }
@@ -69,7 +73,7 @@ public class Item {
             if (quality < 50) {
                 quality = quality + 1;
 
-                if (isNameEquals(GildedRose.backstagePasses)) {
+                if (isNameEquals(BackstagePass.backstagePass)) {
                     if (sellIn < 11) {
                         if (quality < 50) {
                             quality = quality + 1;
