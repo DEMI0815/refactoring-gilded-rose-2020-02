@@ -26,9 +26,8 @@ public class Item {
     }
 
     public void updateQualityWhenExpired() {
-        if (sellIn < 0 && quality > 0) {
-            quality = quality - 1;
-        }
+        if (sellIn < 0)
+            decreaseQuality();
     }
 
     public void updateSellIn() {
@@ -36,8 +35,19 @@ public class Item {
     }
 
     public void updateQuality() {
+        decreaseQuality();
+    }
+
+    protected void increaseQuality() {
+        if (quality < 50) {
+            quality = quality + 1;
+        }
+    }
+
+    private void decreaseQuality() {
         if (quality > 0) {
             quality = quality - 1;
         }
     }
+
 }
