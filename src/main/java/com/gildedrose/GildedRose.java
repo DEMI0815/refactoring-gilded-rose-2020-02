@@ -11,7 +11,7 @@ class GildedRose {
     private static final String agedBrie = "Aged Brie";
     private static final String sulfuras = "Sulfuras, Hand of Ragnaros";
 
-    public void update_quality() {
+    public void updateItemsInOneDay() {
         for (Item item : items) {
             updateItem(item);
         }
@@ -26,7 +26,7 @@ class GildedRose {
     }
 
     private void updateQualityWhenExpired(Item item) {
-        if (item.sell_in < 0) {
+        if (item.sellIn < 0) {
             if (!item.isNameEquals(agedBrie)) {
                 if (!item.isNameEquals(backstagePasses)) {
                     if (item.quality > 0) {
@@ -47,7 +47,7 @@ class GildedRose {
 
     private void updateSellIn(Item item) {
         if (!item.isNameEquals(sulfuras)) {
-            item.sell_in = item.sell_in - 1;
+            item.sellIn = item.sellIn - 1;
         }
     }
 
@@ -64,13 +64,13 @@ class GildedRose {
                 item.quality = item.quality + 1;
 
                 if (item.isNameEquals(backstagePasses)) {
-                    if (item.sell_in < 11) {
+                    if (item.sellIn < 11) {
                         if (item.quality < 50) {
                             item.quality = item.quality + 1;
                         }
                     }
 
-                    if (item.sell_in < 6) {
+                    if (item.sellIn < 6) {
                         if (item.quality < 50) {
                             item.quality = item.quality + 1;
                         }
